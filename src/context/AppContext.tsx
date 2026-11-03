@@ -442,11 +442,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const navigateToEditorial = () => {
+    if (activeRole === 'pembaca') {
+      setActiveRole('administrator');
+    }
     setCurrentView('editorial_dashboard');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const navigateToAdManager = () => {
+    if (activeRole === 'pembaca') {
+      setActiveRole('administrator');
+    }
     setCurrentView('ad_dashboard');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
