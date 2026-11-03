@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1001,
+    "title": "Investigasi Khusus: Ketahanan Pangan dan Digitalisasi Pertanian Jawa Barat",
+    "slug": "investigasi-ketahanan-pangan-digitalisasi-pertanian-jabar",
+    "category": "Investigasi",
+    "excerpt": "Laporan khusus wartawan WartaRadar mengenai modernisasi rantai pasok logistik pangan dan teknologi irigasi cerdas di sentra lumbung padi Subang.",
+    "content": "<p>Subang – Upaya penguatan ketahanan pangan nasional mendapatkan momentum baru melalui penerapan teknologi Internet of Things (IoT) pada sistem tata kelola air dan pemupukan presisi di sentra pertanian Jawa Barat.</p><p>Berdasarkan penelusuran tim investigasi WartaRadar di beberapa kecamatan lumbung padi Kabupaten Subang, kolaborasi antara kelompok tani mandiri dan akademisi berhasil mendongkrak hasil panen hingga 28 persen per hektar sekaligus memangkas biaya operasional irigasi.</p><p>Kepala Dinas Pertanian setempat menegaskan bahwa digitalisasi rantai pasok juga memotong perantara tengkulak, sehingga margin keuntungan petani langsung meningkat secara signifikan.</p>",
+    "thumbnail": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1200",
+    "author": {
+      "name": "Tim Investigasi WartaRadar",
+      "role": "Redaktur Liputan Khusus"
+    },
+    "date": "2026-11-03",
+    "views": 4120
+  },
+  {
+    "id": 1002,
+    "title": "Transformasi Transportasi Cepat: Koridor Baru Patimban Siap Pacu Pertumbuhan Ekonomi",
+    "slug": "koridor-baru-patimban-pacu-ekonomi",
+    "category": "Ekonomi & Bisnis",
+    "excerpt": "Akses tol dan rel logistik terpadu Pelabuhan Patimban mempercepat arus ekspor industri manufaktur otomotif hingga 40 persen.",
+    "content": "<p>Akselerasi pembangunan infrastruktur koridor terpadu yang menghubungkan Pelabuhan Internasional Patimban dengan kawasan industri pantura Jawa Barat memasuki babak baru.</p><p>Kementerian Perhubungan bersama otoritas logistik mengumumkan penyelesaian segmen jalan penghubung prioritas yang dirancang khusus untuk angkutan berat ekspor otomotif dan elektronik.</p><p>Langkah ini disambut positif para pelaku usaha karena memangkas waktu tempuh dari koridor industri Cikarang-Karawang-Subang menuju dermaga ekspor secara substansial.</p>",
+    "thumbnail": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200",
+    "author": {
+      "name": "Ahmad Fauzi",
+      "role": "Redaktur Ekonomi"
+    },
+    "date": "2026-11-03",
+    "views": 2890
+  },
+  {
+    "id": 1003,
+    "title": "Sidang Paripurna DPR Bahas Pengesahan Regulasi Perlindungan Data dan Kecerdasan Artifisial",
+    "slug": "sidang-paripurna-dpr-regulasi-ai",
+    "category": "Hukum & HAM",
+    "excerpt": "Rancangan aturan baru menetapkan sanksi tegas bagi penyalahgunaan deepfake dan kebocoran identitas publik di ranah digital.",
+    "content": "<p>Jakarta – Dewan Perwakilan Rakyat (DPR) menggelar rapat paripurna intensif guna merumuskan kerangka hukum etika dan akuntabilitas teknologi kecerdasan artifisial (AI).</p><p>Ketua Komisi I menegaskan perlunya keseimbangan antara mendorong inovasi startup teknologi dengan perlindungan hak fundamental privasi masyarakat dari manipulasi deepfake dan penipuan siber terorganisir.</p>",
+    "thumbnail": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
+    "author": {
+      "name": "Dewi Sartika",
+      "role": "Koresponden Parlemen"
+    },
+    "date": "2026-11-02",
+    "views": 3215
+  },
+  {
+    "id": 1004,
+    "title": "Festival Budaya Pasundan Subang 2026 Pukau Wisatawan Mancanegara",
+    "slug": "festival-budaya-pasundan-subang-2026",
+    "category": "Daerah",
+    "excerpt": "Ratusan seniman menampilkan atraksi Sisingaan dan pagelaran musik tradisional di pusat kota Subang dengan antusiasme luar biasa.",
+    "content": "<p>Subang – Suasana Alun-Alun Subang semarak dengan dentuman kendang dan sorak penonton yang memadati pawai akbar Festival Budaya Pasundan 2026.</p><p>Atraksi Sisingaan khas Subang menjadi primadona yang memikat perhatian ribuan warga lokal dan wisatawan asing yang hadir langsung di lokasi.</p>",
+    "thumbnail": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=1200",
+    "author": {
+      "name": "Rian Hendrawan",
+      "role": "Jurnalis Daerah"
+    },
+    "date": "2026-11-02",
+    "views": 1940
+  }
+]
