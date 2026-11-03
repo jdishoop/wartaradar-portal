@@ -220,10 +220,25 @@ export const Footer: React.FC = () => {
                     <span>Kontak</span>
                   </button>
                 </li>
+                <li className="pt-1">
+                  <button 
+                    onClick={navigateToEditorial}
+                    className="w-full text-left px-2.5 py-1.5 rounded-lg bg-sky-100 hover:bg-sky-200 text-[#003366] font-extrabold text-[11px] transition flex items-center justify-between group shadow-2xs cursor-pointer border border-sky-300"
+                    title="Buka Dashboard Redaksi WartaRadar"
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
+                      <span>Dashboard Redaksi</span>
+                    </span>
+                    <span className="bg-[#003366] text-white text-[9px] px-1 py-0.2 rounded font-bold">
+                      WRMJ
+                    </span>
+                  </button>
+                </li>
               </ul>
 
               {/* Extra Bureau Callout */}
-              <div className="mt-5 p-2.5 rounded-lg bg-sky-100/60 border border-sky-200 text-[10px] text-slate-600">
+              <div className="mt-4 p-2.5 rounded-lg bg-sky-100/60 border border-sky-200 text-[10px] text-slate-600">
                 <span className="font-bold text-[#003366] block mb-0.5">Biro Liputan Subang</span>
                 <span>Pusat koordinasi peliputan wilayah Jawa Barat & Investigasi Nasional.</span>
               </div>
@@ -318,6 +333,15 @@ export const Footer: React.FC = () => {
                 className="hover:text-[#003366] transition cursor-pointer"
               >
                 Iklan & Kerja Sama
+              </button>
+              <span>•</span>
+              <button 
+                onClick={navigateToEditorial}
+                className="font-bold text-[#003366] hover:text-blue-700 transition cursor-pointer underline flex items-center gap-1"
+                title="Masuk ke Dashboard Redaksi WartaRadar"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-blue-700" />
+                <span>Akses Redaksi</span>
               </button>
             </div>
           </div>

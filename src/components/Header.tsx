@@ -187,49 +187,47 @@ export const Header: React.FC = () => {
                 className="bg-transparent text-[#003366] font-bold focus:outline-none cursor-pointer text-xs"
                 title="Ganti peran pengguna (Jurnalis, Editor Berita, Administrator, Pembaca)"
               >
-                <option value="pembaca" className="bg-white text-slate-800">Pembaca Publik</option>
+                <option value="administrator" className="bg-white text-slate-800">Administrator</option>
                 <option value="editor_berita" className="bg-white text-slate-800">Editor Berita</option>
                 <option value="jurnalis" className="bg-white text-slate-800">Jurnalis</option>
-                <option value="administrator" className="bg-white text-slate-800">Administrator</option>
+                <option value="pembaca" className="bg-white text-slate-800">Pembaca Publik</option>
               </select>
             </div>
 
-            {/* Plugin management menus: HIDDEN for public (pembaca), visible according to role */}
-            {activeRole !== 'pembaca' && (
-              <div className="flex items-center gap-2">
-                {/* Manajemen Jurnal (WRMJ): Jurnalis, Editor, Admin */}
-                {(activeRole === 'jurnalis' || activeRole === 'editor_berita' || activeRole === 'administrator') && (
-                  <button 
-                    onClick={navigateToEditorial}
-                    className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition text-[11px] font-bold shadow-2xs ${
-                      currentView === 'editorial_dashboard' 
-                        ? 'bg-[#003366] text-white' 
-                        : 'bg-white hover:bg-sky-50 text-[#003366] border border-sky-300'
-                    }`}
-                    title="Akses Manajemen Jurnal (Editorial Redaksi)"
-                  >
-                    <FileText className="w-3.5 h-3.5 text-blue-600" />
-                    <span>Manajemen Jurnal</span>
-                  </button>
-                )}
+            {/* Direct Access Buttons: Dashboard Redaksi (WRMJ) & Manajemen Iklan (WRMI) */}
+            <div className="flex items-center gap-1.5">
+              {/* Dashboard Redaksi (WRMJ) - Always directly accessible */}
+              <button 
+                onClick={navigateToEditorial}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition text-[11px] font-extrabold shadow-2xs cursor-pointer ${
+                  currentView === 'editorial_dashboard' 
+                    ? 'bg-[#003366] text-white ring-2 ring-sky-300' 
+                    : 'bg-gradient-to-r from-[#003366] to-[#004b93] hover:from-blue-900 hover:to-blue-800 text-white shadow-xs'
+                }`}
+                title="Buka Dashboard Redaksi WartaRadar (Manajemen Naskah, Kurasi Beranda & REST API)"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-sky-300" />
+                <span>Dashboard Redaksi</span>
+                <span className="bg-sky-400 text-slate-950 text-[9px] px-1 py-0.2 rounded font-black uppercase">
+                  WRMJ
+                </span>
+              </button>
 
-                {/* Manajemen Iklan (WRMI): Editor Berita, Admin */}
-                {(activeRole === 'editor_berita' || activeRole === 'administrator') && (
-                  <button 
-                    onClick={navigateToAdManager}
-                    className={`flex items-center gap-1.5 px-3 py-1 rounded-full transition text-[11px] font-bold shadow-2xs ${
-                      currentView === 'ad_dashboard' 
-                        ? 'bg-[#003366] text-white' 
-                        : 'bg-white hover:bg-sky-50 text-amber-900 border border-amber-300'
-                    }`}
-                    title="Akses Manajemen Iklan (WRMI)"
-                  >
-                    <BarChart3 className="w-3.5 h-3.5 text-amber-600" />
-                    <span>Manajemen Iklan</span>
-                  </button>
-                )}
-              </div>
-            )}
+              {/* Manajemen Iklan (WRMI) */}
+              <button 
+                onClick={navigateToAdManager}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full transition text-[11px] font-bold shadow-2xs cursor-pointer ${
+                  currentView === 'ad_dashboard' 
+                    ? 'bg-amber-600 text-white ring-2 ring-amber-300' 
+                    : 'bg-white hover:bg-amber-50 text-amber-900 border border-amber-300'
+                }`}
+                title="Buka Manajemen Iklan (WRMI)"
+              >
+                <BarChart3 className="w-3.5 h-3.5 text-amber-600" />
+                <span className="hidden sm:inline">Manajemen Iklan</span>
+                <span className="sm:hidden">Iklan</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -378,13 +376,47 @@ export const Header: React.FC = () => {
             </button>
             {categories.map(c => (
               <button 
-                key={c}
-                onClick={() => { navigateToCategory(c); setMobileMenuOpen(false); }}
-                className="text-left px-3 py-2.5 rounded-lg bg-white border border-slate-200 hover:border-sky-300 text-slate-700 shadow-2xs"
-              >
-                {c}
-              </button>
+              key={c}
+              onClick={() => { navigateToCategory(c); setMobileMenuOpen(false); }}
+              className="text-left px-3 py-2.5 rounded-lg bg-white border border-slate-200 hover:border-sky-300 text-slate-700 shadow-2xs"
+            >
+              {c}
+            </button>
             ))}
+          </div>
+
+          {/* Quick Access to Redaksi & Iklan on Mobile */}
+          <div className="pt-2 border-t border-sky-200/80 space-y-2">
+            <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-500">
+              Panel Pengelola Redaksi:
+            </p>
+            <div className="grid grid-cols-1 gap-2">
+              <button 
+                onClick={() => { navigateToEditorial(); setMobileMenuOpen(false); }}
+                className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-gradient-to-r from-[#003366] to-[#004b93] text-white text-xs font-bold shadow-xs cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-sky-300" />
+                  <span>Dashboard Redaksi (WRMJ)</span>
+                </div>
+                <span className="bg-sky-400 text-slate-950 text-[9px] px-1.5 py-0.5 rounded font-black">
+                  BUKA
+                </span>
+              </button>
+
+              <button 
+                onClick={() => { navigateToAdManager(); setMobileMenuOpen(false); }}
+                className="w-full flex items-center justify-between px-3.5 py-2 rounded-lg bg-white border border-amber-300 text-amber-900 text-xs font-bold shadow-2xs cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-4 h-4 text-amber-600" />
+                  <span>Manajemen Iklan (WRMI)</span>
+                </div>
+                <span className="text-[10px] text-amber-700 font-semibold">
+                  Sponsor
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       )}
