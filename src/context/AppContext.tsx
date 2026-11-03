@@ -222,13 +222,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const targetUrl = customUrl || apiEndpoint;
     setIsSyncing(true);
     try {
-      const res = await fetch(targetUrl, { headers: { 'Accept': 'application/json' } });
+      const res = await fetch(targetUrl, { 
+        headers: { 'Accept': 'application/json, text/plain, */*' } 
+      });
+      
       if (!res.ok) {
-        throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+        throw new Error(`Server merespons kode HTTP ${res.status} (${res.statusText || 'Gagal terhubung'})`);
       }
-      const rawPosts = await res.json();
+
+      const responseText = await res.text();
+      const trimmed = responseText.trim();
+
+      // Check if server returned HTML instead of JSON (common when WordPress is not installed or 404 rewrite triggers index.html)
+      if (trimmed.startsWith('<!DOCTYPE') || trimmed.startsWith('<html') || trimmed.startsWith('<?xml')) {
+        throw new Error('Server mengembalikan halaman web HTML (bukan data JSON REST API). Hal ini terjadi karena jalur WordPress belum aktif di alamat tersebut. Silakan gunakan endpoint bawaan Hostinger: "/api/posts.json" atau tombol uji.');
+      }
+
+      let rawPosts: any;
+      try {
+        rawPosts = JSON.parse(trimmed);
+      } catch (parseErr: any) {
+        throw new Error(`Respons server bukan format JSON yang valid (${parseErr.message}).`);
+      }
+
       if (!Array.isArray(rawPosts)) {
-        throw new Error('Format respons API bukan array artikel.');
+        // Some WordPress APIs or custom endpoints wrap posts in { posts: [...] } or { data: [...] }
+        if (rawPosts && Array.isArray(rawPosts.posts)) {
+          rawPosts = rawPosts.posts;
+        } else if (rawPosts && Array.isArray(rawPosts.data)) {
+          rawPosts = rawPosts.data;
+        } else {
+          throw new Error('Format respons API bukan array artikel (format JSON tidak dikenali).');
+        }
       }
 
       // Map WordPress REST API or JSON format into Post schema
@@ -297,7 +322,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         return { 
           success: true, 
           count: mappedPosts.length, 
-          message: `Berhasil menyinkronkan ${mappedPosts.length} berita & kategori langsung dari wartaradar.com!` 
+          message: `Berhasil menyinkronkan ${mappedPosts.length} berita & kategori langsung dari sumber data!` 
         };
       } else {
         setIsSyncing(false);
@@ -305,10 +330,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }
     } catch (err: any) {
       setIsSyncing(false);
+      const isCorsOrNetwork = err.name === 'TypeError' && err.message?.includes('fetch');
+      const errDetail = isCorsOrNetwork 
+        ? 'Akses endpoint dibatasi CORS oleh server tujuan. Server harus mengizinkan header "Access-Control-Allow-Origin: *".'
+        : err.message;
       return { 
         success: false, 
         count: 0, 
-        message: `Koneksi ke endpoint belum terbuka atau dibatasi CORS (${err.message}). Data siap disinkronkan via REST API / Webhook server.` 
+        message: `${errDetail}` 
       };
     }
   };

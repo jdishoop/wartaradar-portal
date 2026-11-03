@@ -954,13 +954,39 @@ export const EditorialDashboard: React.FC = () => {
                 Tema ini terhubung dengan arsitektur standar <strong>WordPress REST API</strong> (<code>/wp-json/wp/v2/posts?_embed</code>) atau webhook backend MySQL. Ketika artikel, kategori, atau gambar diterbitkan di wartaradar.com, tema ini langsung menyerap data tersebut tanpa perlu input manual.
               </p>
 
+              {/* Quick Select Endpoint Chips */}
+              <div className="flex flex-wrap items-center gap-2 pt-1">
+                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Pilihan Endpoint:</span>
+                <button
+                  type="button"
+                  onClick={() => setSyncEndpointInput('/api/posts.json')}
+                  className="px-2.5 py-1 bg-slate-100 hover:bg-[#003366] hover:text-white text-slate-700 text-xs font-medium rounded-lg transition border border-slate-200"
+                >
+                  ⚡ /api/posts.json (Bawaan Hostinger)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSyncEndpointInput('https://wartaradar.com/wp-json/wp/v2/posts?_embed')}
+                  className="px-2.5 py-1 bg-slate-100 hover:bg-[#003366] hover:text-white text-slate-700 text-xs font-medium rounded-lg transition border border-slate-200"
+                >
+                  🌐 WordPress Utama
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSyncEndpointInput('https://admin.wartaradar.com/wp-json/wp/v2/posts?_embed')}
+                  className="px-2.5 py-1 bg-slate-100 hover:bg-[#003366] hover:text-white text-slate-700 text-xs font-medium rounded-lg transition border border-slate-200"
+                >
+                  🔒 WordPress Admin Subdomain
+                </button>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 relative">
                   <input
-                    type="url"
+                    type="text"
                     value={syncEndpointInput}
                     onChange={(e) => setSyncEndpointInput(e.target.value)}
-                    placeholder="https://wartaradar.com/wp-json/wp/v2/posts?_embed"
+                    placeholder="/api/posts.json atau https://wartaradar.com/wp-json/wp/v2/posts?_embed"
                     className="w-full text-xs sm:text-sm font-mono p-3 bg-slate-50 border border-slate-300 rounded-xl focus:outline-none focus:border-[#003366] text-slate-800"
                   />
                 </div>
@@ -970,7 +996,7 @@ export const EditorialDashboard: React.FC = () => {
                     setApiEndpoint(syncEndpointInput);
                     const res = await syncWithExternalApi(syncEndpointInput);
                     setSyncStatusMsg({ text: res.message, isError: !res.success });
-                    setTimeout(() => setSyncStatusMsg(null), 8000);
+                    setTimeout(() => setSyncStatusMsg(null), 10000);
                   }}
                   disabled={isSyncing}
                   className="px-5 py-3 bg-[#003366] hover:bg-[#002244] text-white text-xs sm:text-sm font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-xs shrink-0 disabled:opacity-50"
