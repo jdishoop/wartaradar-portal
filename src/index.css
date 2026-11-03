@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+:root {
+  --news-primary: #d9b76c;
+  --news-primary-dark: #b99243;
+  --news-bg: #edf3fb;
+  --news-surface: #ffffff;
+  --news-surface-soft: #f5f7fb;
+  --news-text: #101828;
+  --news-muted: #475467;
+  --news-border: #dfe5f0;
+  --news-dark: #0f172a;
+  --news-dark-soft: #16233d;
+  --news-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  --news-shadow-soft: 0 12px 22px rgba(15, 23, 42, 0.07);
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--news-bg);
+  color: var(--news-text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-news {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+/* Custom theme components & utilities */
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--news-primary), #f2d69a);
+  display: grid;
+  place-items: center;
+  color: #111;
+  font-weight: 900;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 12px rgba(217, 183, 108, 0.35);
+}
+
+.category-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--news-primary);
+  color: #111;
+  border-radius: 4px;
+}
+
+.badge-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #fef08a;
+  color: #854d0e;
+  border: 1px solid #facc15;
+  border-radius: 4px;
+}
+
+.ad-slot-box {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  transition: all 0.2s ease;
+}
+
+.ad-slot-box:hover {
+  border-color: var(--news-primary-dark);
+}
+
+/* WartaRadar Logo Animation Keyframes */
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radar-pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes radar-blip {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 4s linear infinite;
+}
+
+.animate-radar-ring-1 {
+  animation: radar-pulse-ring 3s cubic-bezier(0.1, 0.4, 0.6, 1) infinite;
+}
+
+.animate-radar-ring-2 {
+  animation: radar-pulse-ring 3s cubic-bezier(0.1, 0.4, 0.6, 1) infinite 1.5s;
+}
+
+.animate-radar-blip {
+  animation: radar-blip 1.6s ease-in-out infinite;
+}
+
