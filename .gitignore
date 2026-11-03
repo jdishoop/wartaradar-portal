@@ -15,6 +15,7 @@ dist-ssr/
 dist-wartaradar-hostinger.*
 *.tar.gz
 *.zip
+.vite/
 
 # Editor directories and files
 .vscode/*
